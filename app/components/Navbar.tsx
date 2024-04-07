@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
+import { SignedIn, SignedOut, UserButton, clerkClient } from "@clerk/nextjs";
 
 const links = [
   {
@@ -15,7 +16,7 @@ const links = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = async () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -35,10 +36,23 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex gap-2">
-          <Button className="bg-[#A7D129] hover:bg-[#8bab2b]  text-[#3E432E] rounded-md transform transition-all duration-300 hover:scale-105">
-            Join Now
-          </Button>
+        <div className="flex gap-2 items-center">
+          <SignedOut>
+            <Button className="bg-[#A7D129] hover:bg-[#8bab2b]  text-[#3E432E] rounded-md transform transition-all duration-300 hover:scale-105">
+              Join Now
+            </Button>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  // avatar
+                  avatarBox: "border-2 border-neutral-600",
+                },
+              }}
+            />
+          </SignedIn>
           <Button
             className=" sm:hidden bg-[#00000000]"
             onClick={() => setIsOpen(!isOpen)}
@@ -74,4 +88,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

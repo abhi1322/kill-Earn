@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 export const metadata: Metadata = {
   title: "Kill&Earn",
@@ -15,11 +15,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="text-white">
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        variables: {
+          colorPrimary: "#A7D129",
+        },
+        elements: {
+          formButtonPrimary: "bg-[#A7D129] text-[#3E432E] hover:bg-[#8bab2b]",
+          badge: "bg-[#A7D129] text-[#3E432E]",
+          footerActionLink: "text-[#A7D129]",
+        },
+      }}
+    >
+      <html lang="en">
+        <body className="text-white">
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
