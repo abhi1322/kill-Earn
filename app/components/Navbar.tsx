@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
 import { SignedIn, SignedOut, UserButton, clerkClient } from "@clerk/nextjs";
+import Link from "next/link";
 
 const links = [
   {
@@ -38,9 +39,11 @@ const Navbar = () => {
 
         <div className="flex gap-2 items-center">
           <SignedOut>
-            <Button className="bg-[#A7D129] hover:bg-[#8bab2b]  text-[#3E432E] rounded-md transform transition-all duration-300 hover:scale-105">
-              Join Now
-            </Button>
+            <Link href={"/sign-in"}>
+              <Button className="bg-[#A7D129] hover:bg-[#8bab2b]  text-[#3E432E] rounded-md transform transition-all duration-300 hover:scale-105">
+                Join Now
+              </Button>
+            </Link>
           </SignedOut>
 
           <SignedIn>

@@ -1,15 +1,21 @@
 import Image from "next/image";
-import HeroImg from "../public/assets/images/hero-images.png";
-import UIImage from "../public/assets/images/mobile-img.png";
-import HeroPattern from "../public/assets/backgrounds/Pattern.png";
+import HeroImg from "@/public/assets/images/hero-images.png";
+import UIImage from "@/public/assets/images/mobile-img.png";
+import HeroPattern from "@/public/assets/backgrounds/Pattern.png";
 import { Button } from "@/components/ui/button";
-import { whyChooseUs } from "./constants/constant";
-import Footer from "./components/Footer";
-import { Glow, GlowCapture } from "@codaworks/react-glow";
+import { whyChooseUs } from "../constants/constant";
+import Link from "next/link";
+import { auth, currentUser } from "@clerk/nextjs";
+import { log } from "console";
 
-export default function Home() {
+export default async function Home() {
+  // const { userId } = auth();
+
+  const user = await currentUser();
+  // console.log(user);
+
   return (
-    <main className="">
+    <main>
       <section className="relative w-full sm:h-[60vh] flex flex-col items-center justify-center mt-12 mb-10">
         <Image
           src={HeroPattern}
@@ -33,9 +39,11 @@ export default function Home() {
         </p>
 
         <div className="relative flex justify-center">
-          <Button className="relative bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-16 transform transition-all duration-300 hover:scale-105">
-            Join Now
-          </Button>
+          <Link href={"/sing-in"}>
+            <Button className="relative bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-16 transform transition-all duration-300 hover:scale-105">
+              Join Now
+            </Button>
+          </Link>
 
           <span className="absolute h-3 w-full -z-30 -bottom-1 blur-xl bg-[#baf604ef]"></span>
         </div>
@@ -43,20 +51,16 @@ export default function Home() {
 
       {/* Service section */}
       <section className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4 mx-auto md:w-[70vw] sm:w-[50vw] mb-20">
-        <GlowCapture>
-          <div className="bg-[#151515] p-8 rounded-lg h-80 mx-8 sm:mx-0">
-            <Glow color="red">
-              <h6 className="font-semibold text-xl mb-4">
-                Maximize Your Gaming Skills
-              </h6>
-              <p className="text-[#999]">
-                Ready to turn your gaming prowess into rewards? Welcome to
-                KILL&EARN, where every kill earns you valuable rewards in
-                competitive multiplayer tournaments.
-              </p>
-            </Glow>
-          </div>
-        </GlowCapture>
+        <div className="bg-[#151515] p-8 rounded-lg h-80 mx-8 sm:mx-0">
+          <h6 className="font-semibold text-xl mb-4">
+            Maximize Your Gaming Skills
+          </h6>
+          <p className="text-[#999]">
+            Ready to turn your gaming prowess into rewards? Welcome to
+            KILL&EARN, where every kill earns you valuable rewards in
+            competitive multiplayer tournaments.
+          </p>
+        </div>
 
         <div className="bg-[#151515] mx-8 sm:mx-0 p-8 rounded-lg h-80">
           <h6 className="font-semibold text-xl mb-4">Join the Battle</h6>
@@ -111,17 +115,17 @@ export default function Home() {
               competition, and earn rewards like never before!
             </p>
             <div className="relative flex">
-              <Button className="relative bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-16 transform transition-all duration-300 hover:scale-105">
-                Join Now
-              </Button>
+              <Link href={"/sing-in"}>
+                <Button className="relative bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-16 transform transition-all duration-300 hover:scale-105">
+                  Join Now
+                </Button>
+              </Link>
 
               <span className="absolute h-3 w-[200px] -z-30 -bottom-1 blur-xl bg-[#baf604ef]"></span>
             </div>
           </div>
         </div>
       </section>
-      {/* Footer */}
-      <Footer />
     </main>
   );
 }
