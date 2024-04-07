@@ -16,7 +16,7 @@ const links = [
   },
 ];
 
-const Navbar = async () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
