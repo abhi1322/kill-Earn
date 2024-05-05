@@ -5,14 +5,14 @@ import HeroPattern from "@/public/assets/backgrounds/Pattern.png";
 import { Button } from "@/components/ui/button";
 import { whyChooseUs } from "../constants/constant";
 import Link from "next/link";
-import { auth, currentUser } from "@clerk/nextjs";
-import { log } from "console";
+import {  currentUser } from "@clerk/nextjs";
+
 
 export default async function Home() {
-  // const { userId } = auth();
+
 
   const user = await currentUser();
-  // console.log(user);
+  console.log(user);
 
   return (
     <main>
