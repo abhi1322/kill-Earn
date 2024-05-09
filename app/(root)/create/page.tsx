@@ -1,7 +1,6 @@
 import HeroPattern from "@/public/assets/backgrounds/Pattern.png";
 import Image from "next/image";
 import QRCode from "react-qr-code";
-import Dropdown from "../../components/Dropdown";
 
 const page = () => {
   return (
@@ -28,8 +27,18 @@ const page = () => {
       <section className="w-1/2">
         <form action="" className="bg-[#151515] h-[60vh] w-2/3 rounded-2xl p-8">
           <h5 className="text-[#A7D129] text-2xl font-medium">Create Room</h5>
-          <Dropdown />
           <div className="flex flex-col my-2">
+            <div>
+              <div className="mb-3 mt-4">
+                <select
+                  name="Select Game"
+                  className=" bg-neutral-800 p-2 rounded-md"
+                >
+                  <option value="FreeFire">FreeFire</option>
+                  <option value="PUBG">PUBG</option>
+                </select>
+              </div>
+            </div>
             <label htmlFor="roomID" className="text-[#676767] text-xs mb-1">
               Room ID
             </label>
