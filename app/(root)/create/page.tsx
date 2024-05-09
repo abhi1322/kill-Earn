@@ -1,5 +1,5 @@
 "use client";
-import createTournament from "@/lib/actions/tournamentAction";
+import { createTournament } from "@/lib/actions/tournamentAction";
 import HeroPattern from "@/public/assets/backgrounds/Pattern.png";
 import Image from "next/image";
 import { useState, ChangeEvent, FormEvent } from "react";

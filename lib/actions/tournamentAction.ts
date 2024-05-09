@@ -12,12 +12,12 @@ interface Tournament {
 import TournamentModel from "../models/tournament.model";
 import { connectDB } from "../database";
 
-export default async function createTournament(
+export async function createTournament(
   tournament: Tournament
 ): Promise<Tournament | null> {
   try {
     // Connect to the database
-    await connectDB();
+    await connectDB;
 
     // Create a new tournament in the database
     const newTournament = await TournamentModel.create(tournament);
@@ -29,5 +29,22 @@ export default async function createTournament(
 
     // You can either throw the error to be handled upstream or return null
     throw new Error("Failed to create tournament.");
+  }
+}
+
+export async function fetchAllTournaments(): Promise<Tournament[]> {
+  try {
+    // Connect to the database
+    await connectDB;
+
+    // Fetch all tournaments from the database
+    const tournaments = await TournamentModel.find();
+
+    // Return the array of tournaments
+    return tournaments;
+  } catch (error) {
+    console.error("Error fetching tournaments:", error);
+    // Return an empty array or handle the error as you see fit
+    throw new Error("Failed to fetch tournaments.");
   }
 }
