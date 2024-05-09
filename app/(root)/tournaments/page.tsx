@@ -1,4 +1,5 @@
 "use client";
+import Card from "@/app/components/Card";
 import { fetchAllTournaments } from "@/lib/actions/tournamentAction";
 import React, { useState, useEffect } from "react";
 
@@ -24,7 +25,7 @@ const Page: React.FC = () => {
         const tournaments = await fetchAllTournaments();
         setData(tournaments);
         setLoading(false);
-      } catch (err : any) {
+      } catch (err: any) {
         console.error("Error fetching tournaments:", err);
         setError(err);
         setLoading(false);
@@ -44,19 +45,20 @@ const Page: React.FC = () => {
   }
 
   return (
-    <div className="h-[80vh]">
-
-      {data.map((tournament, index) => (
-        <div key={index}>
-          <h6>Tournament: {tournament.game}</h6>
+    <div className="h-[80vh] w-5/6 mx-auto pt-12">
+      <div className="flex gap-6">
+        {data.map((tournament, index) => (
+          <div key={index}>
+            <Card params={tournament} />
+            {/* <h6>Tournament: {tournament.game}</h6>
           <p>Price: {tournament.price}</p>
           <p>Room ID: {tournament.roomId}</p>
           <p>Room Password: {tournament.roomPass}</p>
-          {/* Format the date and time */}
           <p>Date: {new Date(tournament.date).toLocaleDateString()}</p>
-          <p>Time: {new Date(tournament.time).toLocaleTimeString()}</p>
-        </div>
-      ))}
+        <p>Time: {new Date(tournament.time).toLocaleTimeString()}</p> */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
