@@ -178,3 +178,31 @@ body {
   }
 }
 
+/* PriceInput.css */
+
+/* Style the price input field */
+.price-input {
+  -webkit-appearance: textfield; /* Remove default browser styles */
+}
+
+/* Style the increment and decrement buttons */
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Remove default browser styles */
+  margin: 0; /* Remove default margins */
+}
+
+/* Add custom styling to the increment and decrement buttons */
+.price-input::-webkit-inner-spin-button::after {
+  content: "▲"; /* Unicode character for an up arrow */
+  color: white; /* White color */
+  font-size: 10px; /* Font size */
+  display: block;
+}
+
+.price-input::-webkit-outer-spin-button::after {
+  content: "▼"; /* Unicode character for a down arrow */
+  color: white; /* White color */
+  font-size: 10px; /* Font size */
+  display: block;
+}
