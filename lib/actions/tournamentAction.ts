@@ -17,7 +17,7 @@ export async function createTournament(
 ): Promise<Tournament | null> {
   try {
     // Connect to the database
-    await connectDB;
+    await connectDB();
 
     // Create a new tournament in the database
     const newTournament = await TournamentModel.create(tournament);
@@ -35,7 +35,7 @@ export async function createTournament(
 export async function fetchAllTournaments(): Promise<Tournament[]> {
   try {
     // Connect to the database
-    await connectDB;
+    await connectDB();
 
     // Fetch all tournaments from the database
     const tournaments = await TournamentModel.find();
@@ -44,7 +44,7 @@ export async function fetchAllTournaments(): Promise<Tournament[]> {
     return tournaments;
   } catch (error) {
     console.error("Error fetching tournaments:", error);
-    // Return an empty array or handle the error as you see fit
+    // Throw a custom error with a message
     throw new Error("Failed to fetch tournaments.");
   }
 }

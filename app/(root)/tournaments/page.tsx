@@ -22,12 +22,14 @@ const Page: React.FC = () => {
     // Asynchronous function to fetch data
     const fetchTournaments = async () => {
       try {
+        console.log("Fetching tournaments...");
         const tournaments = await fetchAllTournaments();
+        console.log("Fetched tournaments:", tournaments);
         setData(tournaments);
         setLoading(false);
-      } catch (err: any) {
+      } catch (err) {
         console.error("Error fetching tournaments:", err);
-        setError(err);
+        setError(err as Error);
         setLoading(false);
       }
     };
@@ -50,12 +52,6 @@ const Page: React.FC = () => {
         {data.map((tournament, index) => (
           <div key={index}>
             <Card params={tournament} />
-            {/* <h6>Tournament: {tournament.game}</h6>
-          <p>Price: {tournament.price}</p>
-          <p>Room ID: {tournament.roomId}</p>
-          <p>Room Password: {tournament.roomPass}</p>
-          <p>Date: {new Date(tournament.date).toLocaleDateString()}</p>
-        <p>Time: {new Date(tournament.time).toLocaleTimeString()}</p> */}
           </div>
         ))}
       </div>
