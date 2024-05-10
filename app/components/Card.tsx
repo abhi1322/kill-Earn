@@ -24,14 +24,14 @@ const Card: React.FC<CardProps> = ({ params }) => {
   console.log(date);
 
   const newDate = new Date(date);
-  const formattedDate = date.toLocaleDateString("en-GB", {
+  const formattedDate = newDate.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",
     year: "numeric",
   });
 
   // Format the time as "hh:mm:ss a" in 12-hour format
-  const formattedTime = date.toLocaleTimeString("en-GB", {
+  const formattedTime = newDate.toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
