@@ -10,7 +10,6 @@ interface TournamentParams {
   game: string;
   date: string;
   time: string;
-  imageSrc: string; // The source URL for the image (e.g., FreeFire image URL)
 }
 
 interface CardProps {
