@@ -64,7 +64,7 @@ const Page: React.FC = () => {
       roomId: roomID, // Use the correct property name as per schema
       roomPass,
       date, // Convert date to ISO string
-      time // Convert time to ISO string
+      time, // Convert time to ISO string
     };
 
     // Log data for debugging
@@ -81,29 +81,36 @@ const Page: React.FC = () => {
 
   // Render form and QR code
   return (
-    <div className="relative h-[80vh] w-full flex justify-center items-center gap-8 px-40">
+    <div className="relative sm:h-[80vh]  w-full flex flex-col sm:flex-row  justify-center items-center gap-8 px-8 sm:px-40 pt-16 sm:pt-0 overflow-x-hidden">
       <Image
         src={HeroPattern}
         alt="pattern"
         width={1000}
         height={1000}
-        className="absolute -z-40 left-[25%]"
+        className="absolute -z-40 left-[25vw]"
       />
       {/* Left side */}
-      <section className="w-1/2">
-        <h3 className="text-2xl font-semibold mb-4 w-2/3">
+      <section className="sm:w-1/2">
+        <h3 className="text-2xl font-semibold mb-4 sm:w-2/3">
           Ready to join the action? Fill out the form below and{" "}
           <span className="text-[#A7D129]">start your journey to victory!</span>
         </h3>
-        <p className="mb-2">Generated QR Code</p>
-        <div className="flex justify-center items-center bg-[#151515] w-1/2 px-4 py-8 rounded-2xl">
-          <QRCode value="your-value-here" bgColor="#151515" />
+        <p className="mb-2 mx-auto w-full sm:w-auto text-center sm:text-left">
+          Generated QR Code
+        </p>
+        <div className="flex mx-auto sm:mx-0 justify-center items-center bg-[#151515] w-2/3 sm:w-1/2 sm:px-4 py-3 sm:py-8 rounded-2xl">
+          <QRCode
+            size={256}
+            value={`RoomID = ${roomID},Room Pass = ${roomPass}`}
+            bgColor="#151515"
+            fgColor="#ffffff"
+          />
         </div>
       </section>
       {/* Right side */}
-      <section className="w-1/2">
+      <section className=" sm:w-1/2 mb-8">
         <form
-          className="bg-[#151515] h-[60vh] w-2/3 rounded-2xl p-8"
+          className="bg-[#151515] sm:h-[60vh] md:w-11/12 sm:w-2/3 rounded-2xl p-8"
           onSubmit={handleSubmit}
         >
           <h5 className="text-[#A7D129] text-2xl font-medium">Create Room</h5>
@@ -144,7 +151,7 @@ const Page: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-row gap-12">
+          <div className="flex flex-row gap-4 md:gap-4 sm:gap-12 flex-wrap">
             <div className="flex flex-col my-2">
               <label htmlFor="date" className="text-[#676767] text-xs mb-1">
                 Date
@@ -186,10 +193,10 @@ const Page: React.FC = () => {
             />
           </div>
           <button
-            className="py-2 bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold px-16 transform transition-all duration-300 hover:scale-105 mt-5"
+            className="py-2 bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold px-16 transform transition-all duration-300 hover:scale-105 mt-5 w-full sm:w-2/4"
             type="submit"
           >
-            Join Now
+            Create Tournament
           </button>
         </form>
       </section>

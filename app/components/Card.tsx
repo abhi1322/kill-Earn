@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button"; // Import the Button component
 // Define the expected type of the `params` prop
 interface TournamentParams {
   game: string;
-  date: string;
-  time: string;
+  date: Date;
+  time: Date;
   price: number;
 }
 

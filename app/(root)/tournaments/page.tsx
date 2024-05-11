@@ -9,8 +9,8 @@ interface Tournament {
   game: string;
   roomId: string;
   roomPass: string;
-  date: string;
-  time: string;
+  date: Date;
+  time: Date;
 }
 
 const Page: React.FC = () => {
@@ -47,7 +47,7 @@ const Page: React.FC = () => {
   }
 
   return (
-    <div className="py-12 w-5/6 mx-auto">
+    <div className="py-12 sm:min-h-[80vh] w-5/6 mx-auto">
       <div className="flex gap-6 flex-wrap justify-center">
         {data.map((tournament, index) => (
           <Card params={tournament} key={index} />
