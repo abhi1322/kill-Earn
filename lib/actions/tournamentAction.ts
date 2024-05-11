@@ -28,7 +28,7 @@ export async function createTournament(
     console.error("Error creating tournament:", error);
 
     // You can either throw the error to be handled upstream or return null
-    throw new Error("Failed to create tournament.");
+    throw error;
   }
 }
 

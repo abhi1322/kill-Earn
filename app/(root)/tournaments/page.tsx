@@ -47,12 +47,10 @@ const Page: React.FC = () => {
   }
 
   return (
-    <div className="h-[80vh] w-5/6 mx-auto pt-12">
-      <div className="flex gap-6">
+    <div className="py-12 w-5/6 mx-auto">
+      <div className="flex gap-6 flex-wrap justify-center">
         {data.map((tournament, index) => (
-          <div key={index}>
-            <Card params={tournament} />
-          </div>
+          <Card params={tournament} key={index} />
         ))}
       </div>
     </div>
