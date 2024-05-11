@@ -11,8 +11,8 @@ interface Tournament {
   game: string;
   roomId: string;
   roomPass: string;
-  date: string; // Change the type to string
-  time: string; // Change the type to string
+  date: Date; // Change the type to string
+  time: Date; // Change the type to string
 }
 
 const Page: React.FC = () => {
@@ -63,8 +63,8 @@ const Page: React.FC = () => {
       game,
       roomId: roomID, // Use the correct property name as per schema
       roomPass,
-      date: date.toISOString().split("T")[0], // Convert date to ISO string
-      time: time.toISOString().split("T")[1].substring(0, 5), // Convert time to ISO string
+      date, // Convert date to ISO string
+      time // Convert time to ISO string
     };
 
     // Log data for debugging

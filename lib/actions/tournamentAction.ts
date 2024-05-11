@@ -5,8 +5,8 @@ interface Tournament {
   game: string;
   roomId: string;
   roomPass: string;
-  date: string;
-  time: string;
+  date: Date;
+  time: Date;
 }
 
 import TournamentModel from "../models/tournament.model";
@@ -27,8 +27,7 @@ export async function createTournament(
   } catch (error) {
     console.error("Error creating tournament:", error);
 
-    // You can either throw the error to be handled upstream or return null
-    throw error;
+    throw new Error("Failed to create tournament.");
   }
 }
 

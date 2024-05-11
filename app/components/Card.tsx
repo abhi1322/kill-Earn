@@ -75,7 +75,7 @@ const Card: React.FC<CardProps> = ({ params }) => {
       </p>
       <Image
         objectFit="cover"
-        src={game == "FreFire" ? FreeFire : PUBG} // Use imageSrc from params or fallback to FreeFire
+        src={game == "PUBG" ? PUBG : FreeFire} // Use imageSrc from params or fallback to FreeFire
         width={300}
         height={300}
         alt="Tournament image"
