@@ -147,7 +147,8 @@ const tournament = ({
             ) : (
               <Button className="bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-12 text-sm transform transition-all duration-300 hover:scale-105 mt-3">
                 <Link
-                  href={` https://wa.me/7973003093??text=Hi%20there!%20👋%0A%0AI%20am%20interested%20in%20joining%20the%20tournament.%20I%20agree%20to%20make%20the%20payment%20and%20would%20like%20to%20receive%20the%20Room%20ID%20and%20Password%20once%20the%20payment%20is%20confirmed.%20%0A%0A**Payment%20Details:**%0AI%20understand%20that%20I%20need%20to%20complete%20the%20payment%20to%20confirm%20my%20participation.%0A%0A**Room%20Details:**%0APlease%20send%20me%20the%20Room%20ID%20and%20Password%20after%20my%20payment%20is%20verified.%0A%0A**Terms%20and%20Conditions:**%0AI%20have%20read%20and%20agree%20to%20the%20tournament%20terms%20and%20conditions.%0A%0AThank%20you!%20😊`}
+                  href={`https://wa.me/7973003093?text=Hi%20there!%20👋%0A%0AI%20am%20interested%20in%20joining%20the%20tournament.%20I%20agree%20to%20make%20the%20payment%20and%20would%20like%20to%20receive%20the%20Room%20ID%20and%20Password%20once%20the%20payment%20is%20confirmed.%20%0A%0A**Payment%20Details:**%0AI%20understand%20that%20I%20need%20to%20complete%20the%20payment%20to%20confirm%20my%20participation.%0A%0A**Room%20Details:**%0APlease%20send%20me%20the%20Room%20ID%20and%20Password%20after%20my%20payment%20is%20verified.%0A%0A**Terms%20and%20Conditions:**%0AI%20have%20read%20and%20agree%20to%20the%20tournament%20terms%20and%20conditions.%0A%0AThank%20you!%20😊
+`}
                 >
                   Join Now
                 </Link>
