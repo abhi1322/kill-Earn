@@ -4,6 +4,8 @@ import HeroPattern from "@/public/assets/backgrounds/Pattern.png";
 import Image from "next/image";
 import { useState, ChangeEvent, FormEvent } from "react";
 import QRCode from "react-qr-code";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Define types for your tournament object
 interface Tournament {
@@ -74,14 +76,25 @@ const Page: React.FC = () => {
       // Call createTournament function and await completion
       await createTournament(tournament);
       console.log("Tournament created successfully");
+      toast("Tournament created");
     } catch (error) {
       console.error("Error creating tournament:", error);
+      toast(`Error : ${error}`);
     }
+
+    // Reset form values
+    setPrice(5);
+    setGame("FreeFire");
+    setRoomID("");
+    setRoomPass("");
+    setDate(new Date());
+    setTime(new Date());
   };
 
   // Render form and QR code
   return (
     <div className="relative sm:h-[80vh]  w-full flex flex-col sm:flex-row  justify-center items-center gap-8 px-8 sm:px-40 pt-16 sm:pt-0 overflow-x-hidden">
+      <ToastContainer theme="dark" position={"bottom-left"} />
       <Image
         src={HeroPattern}
         alt="pattern"

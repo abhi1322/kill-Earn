@@ -2,9 +2,11 @@
 import Card from "@/app/components/Card";
 import { fetchAllTournaments } from "@/lib/actions/tournamentAction";
 import React, { useState, useEffect } from "react";
+import ContentLoader from "react-content-loader";
 
 // Define the type of a tournament
 interface Tournament {
+  _id: string;
   price: number;
   game: string;
   roomId: string;
@@ -39,7 +41,22 @@ const Page: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading tournaments...</p>;
+    return (
+      <div className="mx-auto w-[60vw] sm:h-[80vh]  flex-col  flex sm:flex-row justify-center ">
+        <div className="bg-black rounded p-2">
+          <MyLoader />
+        </div>
+        <div className=" rounded p-2">
+          <MyLoader />
+        </div>
+        <div className=" rounded p-2">
+          <MyLoader />
+        </div>
+        <div className="rounded p-2">
+          <MyLoader />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -56,5 +73,21 @@ const Page: React.FC = () => {
     </div>
   );
 };
+
+const MyLoader = () => (
+  <ContentLoader
+    speed={2}
+    width={400}
+    height={400}
+    viewBox="0 0 400 400"
+    backgroundColor="#171717"
+    foregroundColor="#707070"
+  >
+    <rect x="0" y="241" rx="2" ry="2" width="265" height="13" />
+    <rect x="-1" y="261" rx="2" ry="2" width="265" height="24" />
+    <rect x="0" y="62" rx="2" ry="2" width="312" height="172" />
+    <rect x="2" y="333" rx="0" ry="0" width="221" height="57" />
+  </ContentLoader>
+);
 
 export default Page;

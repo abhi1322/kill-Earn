@@ -4,6 +4,7 @@ import Image from "next/image";
 import FreeFire from "@/public/assets/images/card/freefire-cover.png";
 import PUBG from "@/public/assets/images/card/pubg-cover.png";
 import { Button } from "@/components/ui/button"; // Import the Button component
+import Link from "next/link";
 
 // Define the expected type of the `params` prop
 interface TournamentParams {
@@ -11,6 +12,7 @@ interface TournamentParams {
   date: Date;
   time: Date;
   price: number;
+  _id: string;
 }
 
 interface CardProps {
@@ -21,7 +23,8 @@ interface TournamentCardProps {
 }
 
 const Card: React.FC<CardProps> = ({ params }) => {
-  const { game, date, price } = params;
+
+  const { game, date, price, _id } = params;
   const newDate = new Date(date);
   const formattedDate = newDate.toLocaleDateString("en-GB", {
     day: "2-digit",
@@ -104,7 +107,7 @@ const Card: React.FC<CardProps> = ({ params }) => {
           </Button>
         ) : (
           <Button className="bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-12 text-sm transform transition-all duration-300 hover:scale-105 mt-3">
-            Enter Now
+            <Link href={`tournaments/${_id}`}>Join Now</Link>
           </Button>
         )}
       </div>

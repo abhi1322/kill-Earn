@@ -1,6 +1,7 @@
 "use server";
 
 interface Tournament {
+  _id: string;
   price: number;
   game: string;
   roomId: string;
@@ -45,5 +46,18 @@ export async function fetchAllTournaments(): Promise<Tournament[]> {
     console.error("Error fetching tournaments:", error);
     // Throw a custom error with a message
     throw new Error("Failed to fetch tournaments.");
+  }
+}
+
+export async function fetchTournament(tournamentId: string) {
+  try {
+    // Connect to the database
+    await connectDB();
+
+    const tournament = await TournamentModel.findById(tournamentId);
+
+    return tournament;
+  } catch (error) {
+    console.log(error);
   }
 }
