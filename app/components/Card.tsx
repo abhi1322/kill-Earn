@@ -23,7 +23,6 @@ interface TournamentCardProps {
 }
 
 const Card: React.FC<CardProps> = ({ params }) => {
-
   const { game, date, price, _id } = params;
   const newDate = new Date(date);
   const formattedDate = newDate.toLocaleDateString("en-GB", {
@@ -107,7 +106,9 @@ const Card: React.FC<CardProps> = ({ params }) => {
           </Button>
         ) : (
           <Button className="bg-[#A7D129] hover:bg-[#8db120] text-[#3E432E] rounded-lg font-semibold up px-12 text-sm transform transition-all duration-300 hover:scale-105 mt-3">
-            <Link href={`tournaments/${_id}`}>Join Now</Link>
+            <Link className="w-full h-full" href={`tournaments/${_id}`}>
+              Join Now
+            </Link>
           </Button>
         )}
       </div>
