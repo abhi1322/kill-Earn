@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Define types for your tournament object
 interface Tournament {
+  _id: string;
   price: number;
   game: string;
   roomId: string;
@@ -66,7 +67,8 @@ const Page: React.FC = () => {
       roomId: roomID, // Use the correct property name as per schema
       roomPass,
       date, // Convert date to ISO string
-      time, // Convert time to ISO string
+      time,
+      _id: "",
     };
 
     // Log data for debugging
