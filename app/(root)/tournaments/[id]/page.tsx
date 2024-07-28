@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface Tournament {
-  _id: string;
   price: number;
   game: string;
   roomId: string;
@@ -17,32 +16,25 @@ interface Tournament {
   time: Date;
 }
 
-const tournament = ({
-  params,
-}: {
-  params: {
-    id: string;
-  };
-}) => {
-  console.log(params);
+const tournament = ({ params, _id }: { params: Tournament , _id: string}) => {
 
-  const [tournamentId, setTournamentId] = useState(params.id);
+  const [tournamentId, setTournamentId] = useState(params);
   const [tournament, setTournament] = useState<Tournament>();
 
   // fetching tournament using ID
-  useEffect(() => {
-    const getTourament = async () => {
-      try {
-        const tournamentWeGet = await fetchTournament(tournamentId);
-        setTournament(tournamentWeGet);
-        console.log(tournamentWeGet);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const getTourament = async () => {
+  //     try {
+  //       const tournamentWeGet = await fetchTournament(tournamentId);
+  //       setTournament(tournamentWeGet);
+  //       console.log(tournamentWeGet);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    getTourament();
-  }, [tournamentId]);
+  //   getTourament();
+  // }, [tournamentId]);
 
   // time calculation
   const newDate = tournament ? new Date(tournament.date) : new Date();

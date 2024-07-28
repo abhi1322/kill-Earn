@@ -12,7 +12,7 @@ interface TournamentParams {
   date: Date;
   time: Date;
   price: number;
-  _id: string;
+  _id?: string;
 }
 
 interface CardProps {

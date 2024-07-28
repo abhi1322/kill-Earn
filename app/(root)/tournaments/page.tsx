@@ -6,7 +6,7 @@ import ContentLoader from "react-content-loader";
 
 // Define the type of a tournament
 interface Tournament {
-  _id: string;
+  // _id: string;
   price: number;
   game: string;
   roomId: string;
