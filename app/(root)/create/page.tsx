@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Define types for your tournament object
 interface Tournament {
-  _id: string;
   price: number;
   game: string;
   roomId: string;
@@ -68,11 +67,10 @@ const Page: React.FC = () => {
       roomPass,
       date, // Convert date to ISO string
       time,
-      _id: "",
     };
 
     // Log data for debugging
-    console.log("Sending tournament data:", tournament);
+    // console.log("Sending tournament data:", tournament);
 
     try {
       // Call createTournament function and await completion

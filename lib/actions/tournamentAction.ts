@@ -1,7 +1,6 @@
 "use server";
 
 interface Tournament {
-  _id: string;
   price: number;
   game: string;
   roomId: string;
