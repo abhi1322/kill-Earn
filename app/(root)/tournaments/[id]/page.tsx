@@ -14,27 +14,33 @@ interface Tournament {
   roomPass: string;
   date: Date;
   time: Date;
+  _id?: String;
 }
 
-const tournament = ({ params, _id }: { params: Tournament , _id: string}) => {
+const tournament = ({ params }: { params: Tournament }) => {
+  console.log(params);
 
-  const [tournamentId, setTournamentId] = useState(params);
+  const [tournamentId, setTournamentId] = useState<String | undefined>(
+    params._id
+  );
   const [tournament, setTournament] = useState<Tournament>();
 
   // fetching tournament using ID
-  // useEffect(() => {
-  //   const getTourament = async () => {
-  //     try {
-  //       const tournamentWeGet = await fetchTournament(tournamentId);
-  //       setTournament(tournamentWeGet);
-  //       console.log(tournamentWeGet);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getTourament = async () => {
+      try {
+        if (tournamentId) {
+          const tournamentWeGet = await fetchTournament(tournamentId as string);
+          setTournament(tournamentWeGet);
+          console.log(tournamentWeGet);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   getTourament();
-  // }, [tournamentId]);
+    getTourament();
+  }, [tournamentId]);
 
   // time calculation
   const newDate = tournament ? new Date(tournament.date) : new Date();
